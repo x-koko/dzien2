@@ -1,19 +1,20 @@
 <template>
     <div>
-        <h2 class="text-color-600">Wpisy na bloga:</h2>
+        <h2 class="text-blue-600">Wpisy na bloga:</h2>
         <div class="w-100 flex flex-row-reverse">
-            <button @click="pobierzWpisy" class="float-right bg-blue-600 rounded text-white p-4">refresh</button>
+            <button @click="pobierzWpisy" class="bg-blue-600 rounded text-white p-4">refresh</button>
         </div>
-        <div class="grid mx-6 gap-4 my-4 p-4">
-        <div v-for="wpis in wpisy" class="drop-shadow-xl bg-stone-100">
-            <p>{{wpis}}</p>
+        <div class="grid mx-6 gap-4 my-4">
+            <div v-for="(wpis, index) in wpisy" class="drop-shadow-xl bg-stone-300 p-4">
+                <p>id:{{ index }}</p>
+                <p>{{  wpis }}</p>
+            </div>
         </div>
-        <input v-model="nowyBlog" class="borde-2
-        border-blue-600 p-4" type="text">
-
-        <button @click="dodajWpisy" class="bg-blue-600 rounded text-white p-4">dodaj</button>
+        <div class="flex justify-center flex-col">
+            <input v-model="nowyBlog" class="border-2 border-blue-600 p-4" type="text">
+            <button  class="bg-blue-600 rounded text-white p-4" @click="dodajWpisy">dodaj</button>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -35,7 +36,7 @@ export default {
         }
     },
     async mounted(){
-        this.pobierzWpisy();
+        this.pobierzWpisy()
     }
 }
 </script>
